@@ -1,0 +1,61 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f2b180250ca2472bea51.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "PARCIAL2PROPIO",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "PARCIAL2PROPIO::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-PARCIAL2PROPIO-Debug-a89aad01ba61a82a144e.json",
+					"name" : "PARCIAL2PROPIO",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug",
+		"source" : "D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/PARCIAL2PROPIO"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
