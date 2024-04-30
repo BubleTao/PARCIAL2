@@ -1,34 +1,88 @@
 #include <iostream>
-#include <fstream>
-#include "Estacion.h"
+#include "estacion.h"
+#include "linea.h"
+#include "redmetro.h"
 
 using namespace std;
 
+void mostrarMenu() {
+    cout << "\n*** Menu ***\n";
+    cout << "1. Agregar una estacion a una linea\n";
+    cout << "2. Eliminar una estacion de una linea\n";
+    cout << "3. Saber cuantas lineas tiene una red Metro\n";
+    cout << "4. Saber cuantas estaciones tiene una linea dada\n";
+    cout << "5. Saber si una estacion dada pertenece a una linea especifica\n";
+    cout << "6. Agregar una linea a la red Metro\n";
+    cout << "7. Eliminar una linea de la red Metro\n";
+    cout << "8. Saber cuantas estaciones tiene una red Metro\n";
+    cout << "9. Salir\n";
+    cout << "Ingrese su opcion: ";
+}
+
 int main() {
-    // Cargar información de las estaciones desde un archivo
-    cout << "Ingrese el nombre del archivo para cargar la informacion de las estaciones: ";
-    string nombreArchivo;
-    cin >> nombreArchivo;
+    RedMetro red;
+    int opcion;
+    do {
+        mostrarMenu();
+        cin >> opcion;
+        cin.ignore(); // Limpiar el buffer de entrada
 
-    ifstream archivo(nombreArchivo);
-    if (!archivo.is_open()) {
-        cerr << "Error: No se pudo abrir el archivo " << nombreArchivo << endl;
-        exit(1);
-    }
+        switch (opcion) {
+        case 1: {
+            string nombreLinea, nombreEstacion;
+            int tiempoSiguiente, tiempoAnterior;
+            bool esTransferencia;
 
-    // Mostrar estaciones
-    cout << "Estaciones y sus valores:" << endl;
-    while (!archivo.eof()) {
-        Estacion estacion = Estacion::cargar(archivo);
-        if (estacion.getNombre() != "") {
-            cout << "Nombre: " << estacion.getNombre() << endl;
-            cout << "Tiempo Siguiente: " << estacion.getTiempoSiguiente() << endl;
-            cout << "Tiempo Anterior: " << estacion.getTiempoAnterior() << endl;
-            cout << endl;
+            cout << "Ingrese el nombre de la linea: ";
+            getline(cin, nombreLinea);
+            cout << "Ingrese el nombre de la estacion: ";
+            getline(cin, nombreEstacion);
+            cout << "Ingrese el tiempo a la estacion siguiente (segundos): ";
+            cin >> tiempoSiguiente;
+            cout << "Ingrese el tiempo a la estacion anterior (segundos): ";
+            cin >> tiempoAnterior;
+            cout << "¿Es estacion de transferencia? (0: No, 1: Si): ";
+            cin >> esTransferencia;
+
+            Linea* linea = new Linea(nombreLinea, "tren");
+            Estacion* estacion = new Estacion(nombreEstacion, tiempoSiguiente, tiempoAnterior, esTransferencia);
+            linea->agregarEstacion(estacion);
+            red.agregarLinea(linea);
+
+            cout << "Estacion agregada correctamente.\n";
+            break;
         }
-    }
-
-    archivo.close();
+        case 2: {
+            // Código para eliminar una estación de una línea
+            break;
+        }
+        case 3:
+            // Código para mostrar la cantidad de líneas en la red
+            break;
+        case 4:
+            // Código para mostrar la cantidad de estaciones en una línea
+            break;
+        case 5:
+            // Código para verificar si una estación pertenece a una línea
+            break;
+        case 6: {
+            // Código para agregar una línea a la red Metro
+            break;
+        }
+        case 7: {
+            // Código para eliminar una línea de la red Metro
+            break;
+        }
+        case 8:
+            // Código para mostrar la cantidad de estaciones en la red Metro
+            break;
+        case 9:
+            cout << "Saliendo del programa.\n";
+            break;
+        default:
+            cout << "Opcion no valida.\n";
+        }
+    } while (opcion != 9);
 
     return 0;
 }
