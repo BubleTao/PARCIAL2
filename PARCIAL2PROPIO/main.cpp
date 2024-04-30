@@ -21,6 +21,7 @@ void mostrarMenu() {
 
 int main() {
     RedMetro red;
+    string nombreLinea;
     int opcion;
     do {
         mostrarMenu();
@@ -77,7 +78,14 @@ int main() {
             // Código para mostrar la cantidad de líneas en la red
             break;
         case 4:
-            // Código para mostrar la cantidad de estaciones en una línea
+            cout << "Ingrese el nombre de la linea: ";
+            cin >> nombreLinea;
+            if (red.existeLinea(nombreLinea)) {
+                cout << "Cantidad de estaciones en la linea " << nombreLinea << ": "
+                     << red.obtenerCantidadEstacionesLinea(nombreLinea) << endl;
+            } else {
+                cout << "La linea no existe en la red.\n";
+            }
             break;
         case 5:
             // Código para verificar si una estación pertenece a una línea

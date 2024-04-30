@@ -18,6 +18,7 @@ public:
     void agregarEstacion(Estacion* estacion);
     void eliminarEstacion(string nombreEstacion);
     void mostrarEstaciones();
+    int obtenerCantidadEstaciones();
 };
 
 #endif

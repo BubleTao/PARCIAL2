@@ -16,6 +16,8 @@ public:
     void eliminarLinea(string nombreLinea);
     void mostrarLineas();
     vector<Linea*> getLineas(); // Declaración del método público
+    int obtenerCantidadEstacionesLinea(string nombreLinea); // Nuevo método para obtener cantidad de estaciones de una línea
+    bool existeLinea(string nombreLinea);
 };
 
 #endif

@@ -16,12 +16,19 @@ void Linea::agregarEstacion(Estacion* estacion) {
 }
 
 void Linea::eliminarEstacion(string nombreEstacion) {
-    for (auto it = estaciones.begin(); it != estaciones.end(); ++it) {
+    auto it = estaciones.begin();
+    while (it != estaciones.end()) {
         if ((*it)->getNombre() == nombreEstacion) {
+            if ((*it)->getEsTransferencia()) {
+                cout << "No se puede eliminar una estacion de transferencia.\n";
+                return;
+            }
             delete *it; // Liberar la memoria de la estación eliminada
-            estaciones.erase(it);
+            it = estaciones.erase(it); // Actualizar el iterador después de la eliminación
             cout << "Estacion eliminada de la linea " << nombre << endl;
             return;
+        } else {
+            ++it;
         }
     }
     cout << "La estacion no existe en esta linea.\n";
@@ -35,6 +42,10 @@ void Linea::mostrarEstaciones() {
         cout << "Tiempo Anterior: " << estacion->getTiempoAnterior() << ", ";
         cout << "Transferencia: " << (estacion->getEsTransferencia() ? "Si" : "No") << endl;
     }
+}
+
+int Linea::obtenerCantidadEstaciones() {
+    return estaciones.size();
 }
 
 
