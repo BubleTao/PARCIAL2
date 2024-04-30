@@ -16,6 +16,7 @@ public:
     Linea(string _nombre, string _tipoTransporte);
     string getNombre();
     void agregarEstacion(Estacion* estacion);
+    void eliminarEstacion(string nombreEstacion);
     void mostrarEstaciones();
 };
 

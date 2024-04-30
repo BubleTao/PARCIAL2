@@ -53,7 +53,24 @@ int main() {
             break;
         }
         case 2: {
-            // Código para eliminar una estación de una línea
+            string nombreLinea, nombreEstacion;
+            cout << "Ingrese el nombre de la linea: ";
+            getline(cin, nombreLinea);
+            cout << "Ingrese el nombre de la estacion a eliminar: ";
+            getline(cin, nombreEstacion);
+
+            // Buscar la linea en la red y eliminar la estacion
+            bool encontrada = false;
+            for (Linea* linea : red.getLineas()) {
+                if (linea->getNombre() == nombreLinea) {
+                    linea->eliminarEstacion(nombreEstacion);
+                    encontrada = true;
+                    break;
+                }
+            }
+            if (!encontrada) {
+                cout << "La linea especificada no existe en la red.\n";
+            }
             break;
         }
         case 3:

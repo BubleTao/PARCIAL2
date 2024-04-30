@@ -12,3 +12,6 @@ void RedMetro::mostrarLineas() {
     cout << "Cantidad de lineas en la red: " << lineas.size() << endl;
 }
 
+vector<Linea*> RedMetro::getLineas() {
+    return lineas;
+}

@@ -11,8 +11,11 @@ private:
 
 public:
     RedMetro();
+    ~RedMetro();
     void agregarLinea(Linea* linea);
+    void eliminarLinea(string nombreLinea);
     void mostrarLineas();
+    vector<Linea*> getLineas(); // Declaración del método público
 };
 
 #endif
