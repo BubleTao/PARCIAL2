@@ -19,6 +19,7 @@ public:
     void eliminarEstacion(string nombreEstacion);
     void mostrarEstaciones();
     int obtenerCantidadEstaciones();
+    Estacion* buscarEstacion(string nombreEstacion);
 };
 
 #endif

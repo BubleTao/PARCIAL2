@@ -48,5 +48,13 @@ int Linea::obtenerCantidadEstaciones() {
     return estaciones.size();
 }
 
+Estacion* Linea::buscarEstacion(string nombreEstacion) {
+    for (Estacion* estacion : estaciones) {
+        if (estacion->getNombre() == nombreEstacion) {
+            return estacion;
+        }
+    }
+    return nullptr; // Retornar nullptr si no se encuentra la estación
+}
 
 

@@ -10,6 +10,7 @@ private:
     int tiempoSiguiente;
     int tiempoAnterior;
     bool esTransferencia;
+    string nombreLinea;
 
 public:
     Estacion(string _nombre, int _tiempoSiguiente, int _tiempoAnterior, bool _esTransferencia);
@@ -17,6 +18,7 @@ public:
     int getTiempoSiguiente();
     int getTiempoAnterior();
     bool getEsTransferencia();
+    string getNombreLinea();
 };
 
 #endif

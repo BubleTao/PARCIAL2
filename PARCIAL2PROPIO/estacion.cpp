@@ -22,3 +22,7 @@ int Estacion::getTiempoAnterior() {
 bool Estacion::getEsTransferencia() {
     return esTransferencia;
 }
+
+string Estacion::getNombreLinea() {
+    return nombreLinea;
+}
