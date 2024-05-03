@@ -1,7 +1,0 @@
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/PARCIAL2PROPIO.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-D:/DATOS WINDOWS 10/Documents/2024/SISTEMAS/PARCIAL2PROPIA/build-PARCIAL2PROPIO-Desktop_Qt_6_6_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
