@@ -1,10 +1,19 @@
-#include "linea.h"
+#include "Linea.h"
 #include <iostream>
 using namespace std;
 
-Linea::Linea(string _nombre, string _tipoTransporte) {
-    nombre = _nombre;
-    tipoTransporte = _tipoTransporte;
+Linea *Linea::getsiguiente()
+{
+    return siguiente;
+}
+
+void Linea::reroute(Linea * Linea)
+{
+    siguiente = Linea;
+}
+
+Linea::Linea(string _nombre) : nombre(_nombre){
+    estaciones = new Intento_vector();
 }
 
 string Linea::getNombre() {
@@ -12,23 +21,24 @@ string Linea::getNombre() {
 }
 
 void Linea::agregarEstacion(Estacion* estacion) {
-    estaciones.push_back(estacion);
+    estaciones->push_back(estacion);
+
 }
 
 void Linea::eliminarEstacion(string nombreEstacion) {
-    auto it = estaciones.begin();
-    while (it != estaciones.end()) {
-        if ((*it)->getNombre() == nombreEstacion) {
-            if ((*it)->getEsTransferencia()) {
+    auto index = 0;
+    while (index < estaciones->getSize()) {
+        Estacion* estacion = (*estaciones)[index];
+        if (estacion->getNombre() == nombreEstacion) {
+            if (estacion->getEsTransferencia()) {
                 cout << "No se puede eliminar una estacion de transferencia.\n";
                 return;
             }
-            delete *it; // Liberar la memoria de la estación eliminada
-            it = estaciones.erase(it); // Actualizar el iterador después de la eliminación
+            estaciones->erase(index);
             cout << "Estacion eliminada de la linea " << nombre << endl;
             return;
         } else {
-            ++it;
+            ++index;
         }
     }
     cout << "La estacion no existe en esta linea.\n";
@@ -36,25 +46,25 @@ void Linea::eliminarEstacion(string nombreEstacion) {
 
 void Linea::mostrarEstaciones() {
     cout << "Estaciones en la linea " << nombre << ":\n";
-    for (Estacion* estacion : estaciones) {
+    for (int i = 0; i < estaciones->getSize(); ++i) {
+        Estacion* estacion = (*estaciones)[i];
         cout << "Nombre: " << estacion->getNombre() << ", ";
-        cout << "Tiempo Siguiente: " << estacion->getTiempoSiguiente() << ", ";
         cout << "Tiempo Anterior: " << estacion->getTiempoAnterior() << ", ";
         cout << "Transferencia: " << (estacion->getEsTransferencia() ? "Si" : "No") << endl;
     }
 }
 
 int Linea::obtenerCantidadEstaciones() {
-    return estaciones.size();
+    return estaciones->getSize();// Usa el método getSize de IntentoVector
 }
 
 Estacion* Linea::buscarEstacion(string nombreEstacion) {
-    for (Estacion* estacion : estaciones) {
+    for (int i = 0; i < estaciones->getSize(); ++i) {
+        Estacion* estacion = (*estaciones)[i];
         if (estacion->getNombre() == nombreEstacion) {
             return estacion;
         }
     }
     return nullptr; // Retornar nullptr si no se encuentra la estación
 }
-
 

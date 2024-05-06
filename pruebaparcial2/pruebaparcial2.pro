@@ -5,11 +5,15 @@ CONFIG -= qt
 
 SOURCES += \
         estacion.cpp \
+        intento_vector.cpp \
         linea.cpp \
         main.cpp \
+        nodo.cpp \
         redmetro.cpp
 
 HEADERS += \
     estacion.h \
+    intento_vector.h \
     linea.h \
+    nodo.h \
     redmetro.h

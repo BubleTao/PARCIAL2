@@ -5,62 +5,104 @@ using namespace std;
 RedMetro::RedMetro() {}
 
 RedMetro::~RedMetro() {
-    // Liberar la memoria de todas las líneas en la red
-    for (Linea* linea : lineas) {
-        delete linea;
+    Linea* nuevo= cabeza;
+    Linea* paso= nullptr;
+    while (nuevo->getsiguiente()!=nullptr){
+        paso=nuevo;
+        nuevo=nuevo->getsiguiente();
+        delete paso;
     }
-    // Limpiar el vector de líneas
-    lineas.clear();
+    delete nuevo;
 }
 
 void RedMetro::agregarLinea(Linea* linea) {
-    lineas.push_back(linea);
+    tamano++;
+    if(cabeza == nullptr){
+        cabeza = linea;
+    }
+    else{
+        bool flag = 0;
+        Linea* nueva = cabeza;
+        while (!flag)
+        {
+            if (nueva->getsiguiente()==nullptr){
+                nueva->reroute(linea);
+                flag = 1;
+            }
+            else{
+                nueva = nueva->getsiguiente();
+            }
+        }
+    }
 }
 
 void RedMetro::mostrarLineas() {
-    cout << "Cantidad de lineas en la red: " << lineas.size() << endl;
+    cout << "Cantidad de lineas en la red: " << tamano << endl;
 }
 
-vector<Linea*> RedMetro::getLineas() {
-    return lineas;
+Linea* RedMetro::pertenece(string lineademetro)
+{
+    Linea * nuevo = cabeza;
+    while (nuevo != nullptr)
+    {
+        if (nuevo->getNombre() == lineademetro)
+        {
+            return nuevo;
+        }
+        else{
+            nuevo = nuevo->getsiguiente();
+        }
+
+    }
+    return nullptr;
 }
 
 int RedMetro::obtenerCantidadEstacionesLinea(string nombreLinea) {
-    for (Linea* linea : lineas) {
-        if (linea->getNombre() == nombreLinea) {
-            return linea->obtenerCantidadEstaciones();
-        }
+
+    if (pertenece(nombreLinea) != nullptr) {
+        return pertenece(nombreLinea)->obtenerCantidadEstaciones();
     }
+
     return -1; // Retornar un valor negativo para indicar que la línea no existe
 }
 
 bool RedMetro::existeLinea(string nombreLinea) {
-    for (Linea* linea : lineas) {
-        if (linea->getNombre() == nombreLinea) {
-            return true;
-        }
+    if (pertenece(nombreLinea) != nullptr) {
+        return true;
     }
+
     return false;
 }
 
 void RedMetro::eliminarLinea(string nombreLinea) {
-    auto it = lineas.begin();
-    while (it != lineas.end()) {
-        if ((*it)->getNombre() == nombreLinea) {
-            // Verificar si la línea tiene estaciones
-            int cantidadEstaciones = (*it)->obtenerCantidadEstaciones();
-            if (cantidadEstaciones > 0) {
-                cout << "No se puede eliminar la linea porque tiene estaciones.\n";
-                return;
-            } else {
-                delete *it; // Liberar la memoria de la línea eliminada
-                it = lineas.erase(it); // Actualizar el iterador después de la eliminación
-                cout << "Linea eliminada de la red Metro.\n";
-                return;
+    if (pertenece(nombreLinea) != nullptr){
+        if (pertenece(nombreLinea)->obtenerCantidadEstaciones()>0){
+            cout<< "No se puede eliminar la linea porque tiene estaciones.\n";
+            return;
+        }
+        else {
+            Linea * nuevo = cabeza;
+            Linea* anterior = nullptr;
+            while (nuevo != nullptr)
+            {
+                if (nuevo->getNombre() == nombreLinea)
+                {
+                    anterior->reroute(nuevo->getsiguiente());
+                    delete nuevo;
+                }
+                else{
+                    anterior=nuevo;
+                    nuevo = nuevo->getsiguiente();
+                }
+
             }
-        } else {
-            ++it;
+
+
         }
     }
-    cout << "La linea no existe en la red Metro.\n";
+    else{
+        cout<<"la linea no existe";
+
+    }
+
 }
