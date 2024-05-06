@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        Emuladorhora.cpp \
         estacion.cpp \
         intento_vector.cpp \
         linea.cpp \

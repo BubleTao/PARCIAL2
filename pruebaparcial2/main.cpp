@@ -2,6 +2,7 @@
 #include "estacion.h"
 #include "linea.h"
 #include "redmetro.h"
+#include "Emuladorhora.cpp"
 
 using namespace std;
 
@@ -45,7 +46,7 @@ int main() {
             cout << "Ingrese el nombre de la estacion: ";
             getline(cin, nombreEstacion);
             if (lineaExistente){
-                cout << "Ingrese el tiempo a la estacion anterior (segundos): ";
+                cout << "Ingrese el tiempo a la estacion anterior (minutos): ";
                 cin >> tiempoAnterior;
             }
             cout << "¿Es estacion de transferencia? (0: No, 1: Si): ";
@@ -152,13 +153,29 @@ int main() {
 
             break;
         }
-        case 8:
-            // Código para mostrar la cantidad de estaciones en la red Metro
-            break;
+        case 8: {
+            int totalEstaciones = 0;
+            Linea* lineaActual = red.obtenerPrimeraLinea(); // Obtener la primera línea en la red de metro
 
-        case 9:
-            // Código para mostrar la cantidad de estaciones en la red Metro
+            while (lineaActual != nullptr) {
+                int cantidadEstaciones = red.obtenerCantidadEstacionesLinea(lineaActual->getNombre());
+                if (cantidadEstaciones >= 0) {
+                    totalEstaciones += cantidadEstaciones; // Sumar la cantidad de estaciones en la línea actual
+                } else {
+                    cout << "Error: La línea " << lineaActual->getNombre() << " no existe en la red.\n";
+                }
+                lineaActual = red.obtenerSiguienteLinea(lineaActual); // Avanzar a la siguiente línea
+            }
+
+            cout << "La red de metro tiene un total de " << totalEstaciones << " estaciones.\n";
             break;
+        }
+
+        case 9: {
+            // Realizar la simulación
+            calcularTiempoLlegada(red);
+            break;
+        }
 
         case 10:
             cout << "Saliendo del programa.\n";
@@ -166,7 +183,7 @@ int main() {
         default:
             cout << "Opcion no valida.\n";
         }
-    } while (opcion != 10);
+        } while (opcion != 10);
 
-    return 0;
-}
+        return 0;
+    }

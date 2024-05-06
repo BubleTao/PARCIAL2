@@ -63,7 +63,7 @@ int RedMetro::obtenerCantidadEstacionesLinea(string nombreLinea) {
         return pertenece(nombreLinea)->obtenerCantidadEstaciones();
     }
 
-    return -1; // Retornar un valor negativo para indicar que la línea no existe
+    return -1; // Retornar -1 POR QUE NO EXISTE
 }
 
 bool RedMetro::existeLinea(string nombreLinea) {
@@ -105,4 +105,14 @@ void RedMetro::eliminarLinea(string nombreLinea) {
 
     }
 
+}
+Linea* RedMetro::obtenerPrimeraLinea() {
+    return cabeza;
+}
+
+Linea* RedMetro::obtenerSiguienteLinea(Linea* lineaActual) {
+    if (lineaActual)
+        return lineaActual->getsiguiente();
+    else
+        return nullptr;
 }

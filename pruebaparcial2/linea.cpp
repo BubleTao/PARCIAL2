@@ -55,7 +55,7 @@ void Linea::mostrarEstaciones() {
 }
 
 int Linea::obtenerCantidadEstaciones() {
-    return estaciones->getSize();// Usa el método getSize de IntentoVector
+    return estaciones->getSize();// Usa IntentoVector
 }
 
 Estacion* Linea::buscarEstacion(string nombreEstacion) {
@@ -65,6 +65,6 @@ Estacion* Linea::buscarEstacion(string nombreEstacion) {
             return estacion;
         }
     }
-    return nullptr; // Retornar nullptr si no se encuentra la estación
+    return nullptr;
 }
 
